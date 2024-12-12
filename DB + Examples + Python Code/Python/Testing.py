@@ -41,7 +41,6 @@ print(current_dir)
 con = psycopg2.connect(database="postgres", user="postgres", password="000000", host="127.0.0.1", port=5432)
 
 cursor = con.cursor()
-
 cursor.execute("SELECT * FROM pengujian WHERE kecamatan='{0}' AND test_date='{1}'".format(kecamatan,tgl))
 
 print("Database terhubung.")
@@ -174,16 +173,16 @@ print("Melakukan klasifikasi...")
 h=0 
 hs=0
 im = 0
-for i in range(len(pred)):
-  if pred[i] == "Hijau":
-      h +=1
-  if pred[i] == "HijauSebagian":
-      hs +=1
-  if pred[i] == "Impervious":
-      im +=1
-print("Hijau:",h,"piksel")
-print("HijauSebagian:",hs,"piksel")
-print("Impervious:",im,"piksel")
+# for i in range(len(pred)):
+#   if pred[i] == "Hijau":
+#       h +=1
+#   if pred[i] == "HijauSebagian":
+#       hs +=1
+#   if pred[i] == "Impervious":
+#       im +=1
+# print("Hijau:",h,"piksel")
+# print("HijauSebagian:",hs,"piksel")
+# print("Impervious:",im,"piksel")
 print("Membuat citra hasil klasifikasi...")
 red = np.array(z).reshape(x.height,x.width).astype(np.uint8)
 green = np.array(z).reshape(x.height,x.width).astype(np.uint8)
@@ -208,6 +207,9 @@ for i in range(x.height):
 
       k=k+1
 # print("how much is k:",k)
+print("Hijau:",h,"piksel")
+print("HijauSebagian:",hs,"piksel")
+print("Impervious:",im,"piksel")
 hijauClassic = str(h * 900)
 hjsClassic = str(hs * 900)
 imperClassic = str(im * 900)
@@ -360,16 +362,13 @@ print("Melakukan klasifikasi...")
 h=0 
 hs=0
 im = 0
-for i in range(len(pred)):
-  if pred[i] == "Hijau":
-      h +=1
-  if pred[i] == "HijauSebagian":
-      hs +=1
-  if pred[i] == "Impervious":
-      im +=1
-print("Hijau:",h,"piksel")
-print("HijauSebagian:",hs,"piksel")
-print("Impervious:",im,"piksel")
+# for i in range(len(pred)):
+#   if pred[i] == "Hijau":
+#       h +=1
+#   if pred[i] == "HijauSebagian":
+#       hs +=1
+#   if pred[i] == "Impervious":
+#       im +=1
 
 print("Membuat citra hasil klasifikasi...")
 red = np.array(z).reshape(x.height,x.width).astype(np.uint8)
@@ -389,6 +388,9 @@ for i in range(x.height):
       elif pred[k] == "Impervious":
         im +=1
       k=k+1
+print("Hijau:",h,"piksel")
+print("HijauSebagian:",hs,"piksel")
+print("Impervious:",im,"piksel")
 hijau = str(h * 900)
 hjs = str(hs * 900)
 imper = str(im * 900)
